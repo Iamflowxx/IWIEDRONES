@@ -108,46 +108,52 @@ const SpecItem = styled.li`
 const drones = [
   {
     name: 'DJI Mini 2',
-    image: '/images/drones/mini2.jpg',
-    description: 'Dron ultraligero perfecto para fotografía y videografía aérea básica.',
+    image: '/images/drones/DJI-mini-2.png',
+    description: 'Dron ultraligero ideal para servicios audiovisuales y eventos.',
     specs: [
-      'Peso: < 249g',
-      'Tiempo de vuelo: 31 min',
-      'Distancia máxima: 10km',
-      'Resolución: 4K/30fps'
+      'Curso aprobación DGAC',
+      'Curso audiovisual',
+      'Videos de propiedades',
+      'Eventos (No masivos)'
     ]
   },
   {
     name: 'DJI Mavic 3M Multispectral',
-    image: '/images/drones/mavic3m.jpg',
+    image: '/images/drones/mavic3m.png',
     description: 'Sistema avanzado de mapeo multispectral para agricultura de precisión.',
     specs: [
-      'Cámara multiespectral',
-      'RTK integrado',
-      'Tiempo de vuelo: 43 min',
-      'Mapeo preciso'
-    ]
+      'Revision de vigorosidad de campos.',
+      'Mapeo de zonas de aplicacion.',
+      'Determinacion de produccion agricola.', 
+      'Mapeo de calidad del suelo.',
+      'Mapeo de riego.', 
+    ] 
   },
   {
     name: 'DJI Mavic 3E Thermal',
     image: '/images/drones/mavic3e.jpg',
     description: 'Cámara térmica integrada para inspecciones y análisis térmico.',
     specs: [
-      'Cámara térmica',
-      'Zoom 56×',
-      'Tiempo de vuelo: 45 min',
-      'Sensor 4/3 CMOS'
-    ]
+      'Revision de estructuras (por ejemplo torres de alta tension).',
+      'Revision de paneles fotovoltaicos.',
+      'Televigilancia con camara termal y RGB', 
+      '',
+      '', 
+    ] 
   },
+  
   {
     name: 'Agras T40',
     image: '/images/drones/agrasT40.jpg',
     description: 'Dron de pulverización agrícola de alta capacidad para grandes extensiones.',
     specs: [
-      'Capacidad: 40L',
-      'Velocidad: 7m/s',
-      'Ancho de pulverización: 9m',
-      'Sistema RTK'
+      'Hortalizas y legumbres',
+      'Cereales',
+      'Cultivos forrajeros',
+      'Viñedos en espaldera',
+      'Parronales',
+      'Nogales',
+      'Cerezos'
     ]
   }
 ];

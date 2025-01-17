@@ -4,7 +4,6 @@ import Navbar from './components/Navbar/Navbar.tsx';
 import HeroSection from './components/HeroSection/HeroSection.tsx';
 import Services from './components/Services/Services.tsx';
 import Drones from './components/Drones/Drones.tsx';
-import Pulverizaciones from './components/Pulverizaciones/Pulverizaciones.tsx';
 import Contact from './components/Contact/Contact.tsx';
 import './App.css';
 
@@ -15,7 +14,6 @@ function App() {
       <HeroSection />
       <Drones />
       <Services />
-      <Pulverizaciones />
       <Contact />
     </Router>
   );

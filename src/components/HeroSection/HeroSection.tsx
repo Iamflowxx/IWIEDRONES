@@ -97,12 +97,49 @@ const Button = styled.a`
   }
 `;
 
+const QuoteContainer = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  max-width: 800px;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+`;
+
+const QuoteText = styled.p`
+  font-size: 1.5rem;
+  color: #333;
+  font-style: italic;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+const QuoteAuthor = styled.p`
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+  
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
 const HeroSection = () => {
   return (
     <HeroContainer>
       <HeroBg>
         <VideoBg autoPlay loop muted playsInline>
-          <source src="/videos/videodrones.mp4" type="video/mp4" />
+          <source src="/videos/videodrones.MP4" type="video/mp4" />
         </VideoBg>
       </HeroBg>
       <HeroContent>
@@ -114,6 +151,14 @@ const HeroSection = () => {
           Contáctanos
         </Button>
       </HeroContent>
+      <QuoteContainer>
+        <QuoteText>
+          "Estaremos realmente atrapados con la tecnología cuando todo lo que queramos sean sólo cosas que funcionen."
+        </QuoteText>
+        <QuoteAuthor>
+          – Douglas Adams
+        </QuoteAuthor>
+      </QuoteContainer>
     </HeroContainer>
   );
 };
