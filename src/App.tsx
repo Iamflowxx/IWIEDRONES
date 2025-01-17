@@ -6,6 +6,7 @@ import Services from './components/Services/Services.tsx';
 import Drones from './components/Drones/Drones.tsx';
 import Contact from './components/Contact/Contact.tsx';
 import Quote from './components/Quote/Quote.tsx';
+import Footer from './components/Footer/Footer.tsx';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Drones />
       <Services />
       <Contact />
+      <Footer />
     </Router>
   );
 }

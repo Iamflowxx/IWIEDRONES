@@ -38,6 +38,11 @@ const NavLogo = styled.a`
   margin-left: 24px;
   font-weight: bold;
   text-decoration: none;
+
+  img {
+    height: 50px;
+    margin-right: 10px;
+  }
 `;
 
 const MobileIcon = styled.div`
@@ -220,7 +225,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setIsOpen(false);
             }}>
-              IWIE DRONES
+              <img src="/images/logo-iwiedrones.jpg" alt="IWIE DRONES" />
             </NavLogo>
             <MobileIcon onClick={toggleMenu}>
               <FaBars />
