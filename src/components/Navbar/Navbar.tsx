@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav<{ scrollNav: boolean }>`
@@ -29,7 +28,7 @@ const NavbarContainer = styled.div`
   max-width: 1200px;
 `;
 
-const NavLogo = styled(Link)`
+const NavLogo = styled.a`
   color: #fff;
   justify-self: flex-start;
   cursor: pointer;
@@ -53,6 +52,7 @@ const MobileIcon = styled.div`
     font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
+    z-index: 999;
   }
 `;
 
@@ -64,59 +64,131 @@ const NavMenu = styled.ul`
   margin-right: -22px;
 
   @media screen and (max-width: 768px) {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: rgba(0, 0, 0, 0.9);
+    padding-top: 2rem;
   }
 `;
 
 const NavItem = styled.li`
   height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+    padding: 1rem 0;
+    width: 100%;
+  }
 `;
 
-const NavLinks = styled(Link)`
+const NavLinks = styled.a`
   color: #fff;
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   height: 100%;
   cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #4169e1;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+  }
 
   &:hover {
     color: #4169e1;
+    
+    &:after {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem;
+    width: 100%;
+    display: table;
+    
+    &:after {
+      display: none;
+    }
   }
 `;
 
 const NavBtn = styled.nav`
   display: flex;
   align-items: center;
+  margin-right: 24px;
 
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const NavBtnLink = styled(Link)`
+const NavBtnLink = styled.a`
   border-radius: 50px;
   background: #4169e1;
   white-space: nowrap;
-  padding: 10px 22px;
+  padding: 12px 30px;
   color: #fff;
   font-size: 16px;
   outline: none;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(65, 105, 225, 0.2);
 
   &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #fff;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
     color: #4169e1;
+    border: 2px solid #4169e1;
+    box-shadow: 0 4px 20px rgba(65, 105, 225, 0.4);
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 `;
 
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const Navbar = ({ toggle }: { toggle: () => void }) => {
   const [scrollNav, setScrollNav] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   const changeNav = () => {
     if (window.scrollY >= 80) {
@@ -133,59 +205,61 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
     };
   }, []);
 
+  const handleLinkClick = (id: string) => {
+    setIsOpen(false);
+    scrollToSection(id);
+  };
+
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-            <NavLogo to="/">
+            <NavLogo href="#" onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsOpen(false);
+            }}>
               IWIE DRONES
             </NavLogo>
-            <MobileIcon onClick={toggle}>
+            <MobileIcon onClick={toggleMenu}>
               <FaBars />
             </MobileIcon>
-            <NavMenu>
+            <NavMenu isOpen={isOpen}>
               <NavItem>
-                <NavLinks to="/">
-                  Inicio
+                <NavLinks 
+                  href="#drones" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick('drones');
+                  }}
+                >
+                  Nuestros Drones
                 </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="/agricola">
-                  Agrícola
+                <NavLinks 
+                  href="#services" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick('services');
+                  }}
+                >
+                  Servicios
                 </NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="/industrial">
-                  Industrial
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to="/capacitaciones">
-                  Capacitaciones
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to="/inspecciones">
-                  Inspecciones
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to="/forestal">
-                  Forestal
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to="/servicio-tecnico">
-                  Servicio técnico
+                <NavLinks 
+                  href="#contact" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick('contact');
+                  }}
+                >
+                  Contáctanos
                 </NavLinks>
               </NavItem>
             </NavMenu>
-            <NavBtn>
-              <NavBtnLink to="/contactanos">
-                Contáctanos
-              </NavBtnLink>
-            </NavBtn>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>

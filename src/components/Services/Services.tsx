@@ -123,28 +123,24 @@ const services = [
   {
     title: 'ENERGÍA',
     description: 'Aplicación al área de energías renovables y convencionales. Revisar las Instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.',
-    image: '/images/energia.jpg'
+    image: '/images/servicios/energia.jpg'
   },
   {
     title: 'INDUSTRIA',
     description: 'Levantamiento de datos de empresa dependiendo del área al área que se dedique. (Ej: Inventario con drones, revisión de techumbres, etc.)',
-    image: '/images/industria.jpg'
+    image: '/images/servicios/industrial.jpg'
   },
   {
     title: 'TELEVIGILANCIA',
     description: 'Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.',
-    image: '/images/televigilancia.jpg'
+    image: '/images/servicios/vigilancia.jpg'
   },
   {
     title: 'AGRÍCOLA',
     description: 'Planimetría, fumigaciones y producción.',
-    image: '/images/agricola.jpg'
+    image: '/images/servicios/agricola.jpg'
   },
-  {
-    title: 'CAPACITACIÓN',
-    description: 'Certificación DGAC, Cursos de especialización',
-    image: '/images/capacitacion.jpg'
-  }
+
 ];
 
 const Services = () => {
@@ -159,7 +155,7 @@ const Services = () => {
   }, []);
 
   return (
-    <ServicesContainer>
+    <ServicesContainer id="services">
       <ServicesTitle>NUESTROS SERVICIOS</ServicesTitle>
       <Underline />
       <SlideContainer>

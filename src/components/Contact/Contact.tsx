@@ -84,7 +84,7 @@ const Contact = () => {
   };
 
   return (
-    <ContactContainer>
+    <ContactContainer id="contact">
       <ContactWrapper>
         <ContactTitle>¡Contáctanos!</ContactTitle>
         <ContactForm onSubmit={handleSubmit}>

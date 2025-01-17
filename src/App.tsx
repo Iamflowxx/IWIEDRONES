@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection/HeroSection.tsx';
 import Services from './components/Services/Services.tsx';
 import Drones from './components/Drones/Drones.tsx';
 import Contact from './components/Contact/Contact.tsx';
+import Quote from './components/Quote/Quote.tsx';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Navbar toggle={() => {}} />
       <HeroSection />
+      <Quote />
       <Drones />
       <Services />
       <Contact />
